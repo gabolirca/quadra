@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadra - Encuentra tu puesto de comida favorito</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="mt-5">
+            <h1>¡Bienvenido a Quadra!</h1>
+            <p>Descubre, califica y agrega puestos de comida callejera en tu ciudad.</p>
+        </header>
+
+        <div class="alert alert-info" role="alert">
+            <h3>Puestos de comida</h3>
+        </div>
+
+        <!-- Mostrar la lista de puestos -->
+        <ul class="list-group">
+            {% for puesto in puestos %}
+                <li class="list-group-item">
+                    <h5>{{ puesto.nombre }}</h5>
+                    <p>{{ puesto.descripcion }}</p>
+                    <p><strong>Ubicación:</strong> {{ puesto.ubicacion }}</p>
+                </li>
+            {% else %}
+                <p>No hay puestos registrados aún.</p>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('agregar_puesto') }}" class="btn btn-primary mt-3">Agregar un nuevo puesto</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
